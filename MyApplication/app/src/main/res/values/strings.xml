@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">AdaptadorRecurso</string>
+    <string-array name="presidentes">
+        <item>Enrique Peña Nieto</item>
+        <item>Felipe calderon</item>
+        <item>Vicente Fox</item>
+        <item>Ernesto Zedillo</item>
+        <item>Carlos Salinas Gortari</item>
+        <item>Miguel de la Madrid</item>
+        <item>Lopez Portillo</item>
+    </string-array>
+
+</resources>
