@@ -1,5 +1,7 @@
 package net.ivanvega.miaudiolibros;
 
+import android.content.Context;
+
 import java.util.Vector;
 
 /**
@@ -17,5 +19,16 @@ public class InfoGlobal {
     public static InfoGlobal getInstance (){
         return INSTANCIA;
     }
+
+    public void inicializa(Context contexto){
+        vectorLibros = Libro.ejemploLibros();
+        adaptador = new AdaptadorLibros(contexto, vectorLibros);
+    }
+
+    public AdaptadorLibros getAdaptador() {
+        return adaptador; }
+
+    public Vector<Libro> getVectorLibros() {
+        return vectorLibros; }
 
 }
