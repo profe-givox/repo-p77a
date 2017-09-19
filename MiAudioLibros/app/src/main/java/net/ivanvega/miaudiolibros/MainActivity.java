@@ -16,28 +16,28 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.layout_main_fragment_hardcode);
 
-        r_v = (RecyclerView)findViewById(R.id.recycler_view);
-        InfoGlobal info = InfoGlobal.getInstance();
-        info.inicializa(this);
-        adp = new AdaptadorLibros(this,
-                info.getVectorLibros() );
-        adp.setOnItemClickListerner(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplication(),
-                String.valueOf( r_v.getChildAdapterPosition((View)view)),
-                        Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        r_v.setAdapter(adp);
-
-
-        lmrv = new GridLayoutManager(this,2);
-        r_v.setLayoutManager(lmrv);
+//        r_v = (RecyclerView)findViewById(R.id.recycler_view);
+//        InfoGlobal info = InfoGlobal.getInstance();
+//        info.inicializa(this);
+//        adp = new AdaptadorLibros(this,
+//                info.getVectorLibros() );
+//        adp.setOnItemClickListerner(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(getApplication(),
+//                String.valueOf( r_v.getChildAdapterPosition((View)view)),
+//                        Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
+//
+//        r_v.setAdapter(adp);
+//
+//
+//        lmrv = new GridLayoutManager(this,2);
+//        r_v.setLayoutManager(lmrv);
 
 
 

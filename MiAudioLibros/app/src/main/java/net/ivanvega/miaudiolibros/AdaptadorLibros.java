@@ -23,7 +23,7 @@ public class AdaptadorLibros extends
     private Vector<Libro> vectorLibros;
     private  Context contexto;
 
-    public void setOnItemClickListerner(View.OnClickListener onClickListener){
+    public void setOnItemClickListener(View.OnClickListener onClickListener){
         this.onClickListener = onClickListener;
     }
 
