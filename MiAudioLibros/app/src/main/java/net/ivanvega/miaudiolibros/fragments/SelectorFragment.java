@@ -6,6 +6,7 @@ import android.content.Context;
 import android.icu.text.IDNA;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import net.ivanvega.miaudiolibros.AdaptadorLibros;
 import net.ivanvega.miaudiolibros.Aplicacion;
 import net.ivanvega.miaudiolibros.InfoGlobal;
 import net.ivanvega.miaudiolibros.Libro;
+import net.ivanvega.miaudiolibros.MainActivity;
 import net.ivanvega.miaudiolibros.R;
 
 import java.util.Vector;
@@ -26,7 +28,7 @@ import java.util.Vector;
  */
 
 public class SelectorFragment extends Fragment {
-    private Activity actividad;
+    private AppCompatActivity actividad;
     private RecyclerView recyclerView;
     private AdaptadorLibros adaptador;
     private Vector<Libro> vectorLibros;
@@ -35,7 +37,7 @@ public class SelectorFragment extends Fragment {
     public void onAttach(Context contexto) {
         super.onAttach(contexto);
         if (contexto instanceof Activity) {
-            this.actividad = (Activity) contexto;
+            this.actividad = (AppCompatActivity) contexto;
             InfoGlobal inf = InfoGlobal.getInstance();
             inf.inicializa(contexto);
             adaptador = inf.getAdaptador();
@@ -55,10 +57,14 @@ public class SelectorFragment extends Fragment {
         adaptador.setOnItemClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(actividad, "Seleccionado el elemento: "
-                        + recyclerView.getChildAdapterPosition(v),
-                        Toast.LENGTH_SHORT)
-                        .show();
+//                Toast.makeText(actividad, "Seleccionado el elemento: "
+//                        + recyclerView.getChildAdapterPosition(v),
+//                        Toast.LENGTH_SHORT)
+//                        .show();
+
+                ((MainActivity)actividad).mostrarDetalle(
+                        recyclerView.getChildAdapterPosition(v)
+                );
 
             } }
         );

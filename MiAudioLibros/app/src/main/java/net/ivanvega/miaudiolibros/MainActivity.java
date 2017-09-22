@@ -1,5 +1,6 @@
 package net.ivanvega.miaudiolibros;
 
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -7,6 +8,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
+
+import net.ivanvega.miaudiolibros.fragments.DetalleFragment;
+import net.ivanvega.miaudiolibros.fragments.SelectorFragment;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView r_v;
@@ -16,31 +20,36 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_main_fragment_hardcode);
+        setContentView(R.layout.containt_main);
 
-//        r_v = (RecyclerView)findViewById(R.id.recycler_view);
-//        InfoGlobal info = InfoGlobal.getInstance();
-//        info.inicializa(this);
-//        adp = new AdaptadorLibros(this,
-//                info.getVectorLibros() );
-//        adp.setOnItemClickListerner(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(getApplication(),
-//                String.valueOf( r_v.getChildAdapterPosition((View)view)),
-//                        Toast.LENGTH_SHORT).show();
-//
-//            }
-//        });
-//
-//        r_v.setAdapter(adp);
-//
-//
-//        lmrv = new GridLayoutManager(this,2);
-//        r_v.setLayoutManager(lmrv);
+        if ((findViewById(R.id.contenedor_pequeno) != null)
+                &&
+                (getSupportFragmentManager().findFragmentById(
+                R.id.contenedor_pequeno) == null))
+        {
+            SelectorFragment primerFragment = new SelectorFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.contenedor_pequeno, primerFragment)
+                    .commit();
+        }
 
+    }
 
-
-
+    public void mostrarDetalle(int id) {
+        DetalleFragment detalleFragment = (DetalleFragment)
+                getSupportFragmentManager().findFragmentById(R.id.detalle_fragment);
+        if (detalleFragment != null) {
+            detalleFragment.ponInfoLibro(id);
+        } else {
+            DetalleFragment nuevoFragment = new DetalleFragment();
+            Bundle args = new Bundle();
+            args.putInt(DetalleFragment.ARG_ID_LIBRO, id);
+            nuevoFragment.setArguments(args);
+            FragmentTransaction transaccion = getSupportFragmentManager()
+                    .beginTransaction();
+            transaccion.replace(R.id.contenedor_pequeno, nuevoFragment);
+            transaccion.addToBackStack(null);
+            transaccion.commit();
+        }
     }
 }

@@ -77,6 +77,7 @@ public class DetalleFragment extends Fragment
     }
 
     public void ponInfoLibro(int id) {
+
         ponInfoLibro(id, getView());
     }
 
@@ -91,58 +92,77 @@ public class DetalleFragment extends Fragment
     }
 
     @Override
+    public void onStop() {
+        mediaController.hide();
+        try {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+        } catch (Exception e) {
+            Log.d("Audiolibros", "Error en mediaPlayer.stop()"); }
+        super.onStop();
+    }
+
+    @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
+        mediaController.show();
         return false;
     }
 
     @Override
     public void start() {
-
+        mediaPlayer.start();
     }
 
     @Override
     public void pause() {
-
+        mediaPlayer.pause();
     }
 
     @Override
     public int getDuration() {
-        return 0;
+
+        return mediaPlayer.getDuration();
     }
 
     @Override
     public int getCurrentPosition() {
-        return 0;
+
+        return mediaPlayer.getCurrentPosition();
     }
 
     @Override
     public void seekTo(int i) {
-
+        mediaPlayer.seekTo(i);
     }
 
     @Override
     public boolean isPlaying() {
-        return false;
+
+        return mediaPlayer.isPlaying();
     }
 
     @Override
-    public int getBufferPercentage() {
+    public int getBufferPercentage()
+    {
         return 0;
     }
 
     @Override
     public boolean canPause() {
-        return false;
+
+        return true;
     }
 
     @Override
     public boolean canSeekBackward() {
-        return false;
+
+        return true;
     }
 
     @Override
     public boolean canSeekForward() {
-        return false;
+
+        return true;
     }
 
     @Override
