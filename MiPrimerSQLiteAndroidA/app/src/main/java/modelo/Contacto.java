@@ -6,11 +6,15 @@ import java.util.Date;
  * Created by alcohonsilver on 05/10/17.
  */
 
-class Contacto {
+public class Contacto {
     int id;
     String nombre;
     String correo_electronico;
     String twitter;
+
+    public Contacto() {
+
+    }
 
     public int getId() {
         return id;
@@ -71,5 +75,8 @@ class Contacto {
     String telefono;
     Date fecha_nacimiento;
 
-
+    @Override
+    public String toString() {
+        return this.nombre + "\n" + this.correo_electronico;
+    }
 }
