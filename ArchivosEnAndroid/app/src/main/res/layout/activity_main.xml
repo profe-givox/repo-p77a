@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <RadioGroup android:id="@+id/optgAlmacenamiento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:showDividers="middle">
+
+        <RadioButton android:id="@+id/optInterna"
+            android:text="Interna"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"/>
+
+        <RadioButton android:id="@+id/optExterna"
+            android:text="Externa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+
+    </RadioGroup>
+
+    <TextView android:text="Escribe la nota"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText android:id="@+id/txt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:inputType="textMultiLine"
+        android:layout_weight="1"
+        />
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        <Button android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Abrir"
+            android:onClick="btnAbrir_click"
+            />
+        <Button android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Guardar"
+            android:onClick="btnGuardar_click"/>
+    </RelativeLayout>
+
+</LinearLayout>
