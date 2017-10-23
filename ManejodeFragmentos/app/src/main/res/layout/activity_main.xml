@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="net.ivanvega.manejodefragmentos.MainActivity">
+
+
+    <Button
+        android:id="@+id/btnHardcode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="Fragmento Hardcode XML"
+        android:onClick="btnHardcode_click"
+        />
+
+    <Button
+        android:id="@+id/btnDinamico"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fragmento Dinamico"
+        android:onClick="btnDinamico_click"
+        />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/contenedor_fragment"
+        >
+
+    </FrameLayout>
+</LinearLayout>
