@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="net.ivanvega.notificacionesydialogos.MainActivity"
+    android:orientation="vertical">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/btnInfo"
+        android:onClick="btnInfo_click"
+        android:text="Dialogo Simple"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/btnList"
+        android:onClick="btnList_click"
+        android:text="Dialogo de lista"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/btnCheckList"
+            android:onClick="btnCheckList_click"
+        android:text="Dialogo de CheckList"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/btnNotificacion"
+        android:onClick="btnNotificacion_click"
+        android:text="Notificacion"
+        />
+
+</LinearLayout>
