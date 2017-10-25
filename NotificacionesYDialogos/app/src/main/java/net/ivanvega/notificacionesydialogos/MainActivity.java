@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
                 new AlertDialog.Builder(this)
                         .setTitle("Cuadro de dialogo")
                         .setIcon(R.mipmap.ic_launcher)
-                        .setMessage("Color favorito:")
                         .setItems(colores, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -80,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 new AlertDialog.Builder(this)
                         .setTitle("Cuadro de dialogo")
                         .setIcon(R.mipmap.ic_launcher)
-                        .setMessage("Musica favorita:")
+                        
                         .setMultiChoiceItems(generos_musicales,
                                 new boolean[]{true, false, true, false}
                                 , new DialogInterface.OnMultiChoiceClickListener() {

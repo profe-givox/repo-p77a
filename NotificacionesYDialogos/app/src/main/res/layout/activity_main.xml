@@ -9,7 +9,7 @@
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/btnInfo"
         android:onClick="btnInfo_click"
         android:text="Dialogo Simple"
@@ -17,7 +17,7 @@
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/btnList"
         android:onClick="btnList_click"
         android:text="Dialogo de lista"
@@ -25,7 +25,7 @@
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/btnCheckList"
             android:onClick="btnCheckList_click"
         android:text="Dialogo de CheckList"
@@ -33,7 +33,7 @@
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/btnNotificacion"
         android:onClick="btnNotificacion_click"
         android:text="Notificacion"
