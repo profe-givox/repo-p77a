@@ -1,10 +1,18 @@
 package net.ivanvega.notificacionesydialogos;
 
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.icu.util.Calendar;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.view.SupportActionModeWrapper;
+import android.util.Log;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -79,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 new AlertDialog.Builder(this)
                         .setTitle("Cuadro de dialogo")
                         .setIcon(R.mipmap.ic_launcher)
-                        
+
                         .setMultiChoiceItems(generos_musicales,
                                 new boolean[]{true, false, true, false}
                                 , new DialogInterface.OnMultiChoiceClickListener() {
@@ -97,6 +105,37 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void btnTimePicker_click(View v){
+        DialogFragment timePickerDialogFragment =
+                new MiTimePickerFragment();
+
+        timePickerDialogFragment.show(getSupportFragmentManager(), "timepicker");
+    }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public  void btnDatePicker_click(View v){
+
+        // Use the current date as the default date in the picker
+         Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+
+
+        DatePickerDialog datePickDialog =
+                new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                            Log.d("DATEPICKER", "Fecha seleccionada: "
+                                    + String.valueOf(dayOfMonth) + "/" +
+                                    String.valueOf(month) + "/" + String.valueOf(year));
+                        }
+
+                }, year,month,day);
+
+        datePickDialog.show();
+
+
+    }
 }

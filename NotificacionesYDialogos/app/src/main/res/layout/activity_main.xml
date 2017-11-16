@@ -39,4 +39,20 @@
         android:text="Notificacion"
         />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnTimePicker"
+        android:text="Time Picker"
+        android:onClick="btnTimePicker_click"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnDatePicker"
+        android:text="Date Picker"
+        android:onClick="btnDatePicker_click"
+        />
+
 </LinearLayout>
