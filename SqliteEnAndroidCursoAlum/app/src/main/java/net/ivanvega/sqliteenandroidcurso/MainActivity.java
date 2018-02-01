@@ -6,12 +6,15 @@ import net.ivanvega.sqliteenandroidcurso.modelo.Usuario;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteCursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.provider.UserDictionary;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.util.Log;
@@ -34,6 +37,27 @@ public class MainActivity extends Activity {
 
 
 	public void btnCPD_click(View v){
+
+		ContentValues cv = new ContentValues();
+
+		cv.put(UserDictionary.Words.WORD, "PerroNegro");
+		cv.put(UserDictionary.Words.FREQUENCY, 200);
+		cv.put(UserDictionary.Words.LOCALE, "es_US");
+		cv.put(UserDictionary.Words.APP_ID, "net.ivanvega.sqliteenandroidcurso");
+
+
+
+		Uri uri = getContentResolver().insert(UserDictionary.Words.CONTENT_URI,
+				cv
+				);
+
+		if (uri != null ){
+			Log.d("CP", uri.toString());
+		}else{
+			Log.d("CP", "No inseeto");
+		}
+
+
 		Cursor cd = getContentResolver().query(
 				UserDictionary.Words.CONTENT_URI,
 				new String[]{
@@ -42,6 +66,49 @@ public class MainActivity extends Activity {
 						UserDictionary.Words.LOCALE
 				},null,null,null
 		);
+
+
+		SimpleCursorAdapter sca
+				= new SimpleCursorAdapter
+				(this,
+						android.R.layout.simple_list_item_2,
+						cd,
+						new String[]{
+								UserDictionary.Words._ID,
+								UserDictionary.Words.WORD
+
+						},
+						new int[]{android.R.id.text1,android.R.id.text2},
+						android.widget.SimpleCursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER
+						);
+
+
+
+
+		Cursor cc = getContentResolver().query(
+				ContactsContract.Contacts.CONTENT_URI,
+				new String[]{
+						ContactsContract.Contacts._ID,
+						ContactsContract.Contacts.DISPLAY_NAME,
+
+				},
+				null, null,null
+		);
+
+		SimpleCursorAdapter scac
+				= new SimpleCursorAdapter
+				(this,
+						android.R.layout.simple_list_item_2,
+						cc,
+						new String[]{
+								ContactsContract.Contacts._ID,
+								ContactsContract.Contacts.DISPLAY_NAME,
+						},
+						new int[]{android.R.id.text1,android.R.id.text2},
+						SimpleCursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER
+				);
+
+		lst.setAdapter(sca);
 	}
 
 	@Override
