@@ -87,6 +87,26 @@ public class UsuariosDAO {
 		return result;
 	}
 
+	public Cursor getOneCursorByID(int id) {
+		Usuario result = null;
+		Cursor c=null;
+
+		try {
+			c = _ad.query
+					(DBUsuarios.TABLE_NAME_USUARIOS,
+							DBUsuarios.COLUMNAS_TABLE_USUARIOS,
+							"_id=" + id,
+							null, null, null, null);
+
+
+		} catch (SQLiteException e) {
+			// TODO: handle exception
+			throw e;
+		}
+
+		return c;
+	}
+
 	public Cursor getAll() {
 		Cursor c=null;
 		

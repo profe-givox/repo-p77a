@@ -37,6 +37,11 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
+        <provider
+            android:authorities="net.ivanvega.sqliteenandroidcurso.provider"
+            android:name=".provider.ProviderBDUser">
+
+        </provider>
     </application>
 
 </manifest>
