@@ -120,4 +120,17 @@ public class UsuariosDAO {
 		return c;
 	}
 
+	public Cursor getUserByCriterio(String cruterio){
+		Cursor c =null;
+
+		_ad .query(DBUsuarios.TABLE_NAME_USUARIOS,
+				DBUsuarios.COLUMNAS_TABLE_USUARIOS,
+				"nombre like %?% " ,
+				new String[]{cruterio},null,null,null
+		);
+
+		return c;
+
+	}
+
 }

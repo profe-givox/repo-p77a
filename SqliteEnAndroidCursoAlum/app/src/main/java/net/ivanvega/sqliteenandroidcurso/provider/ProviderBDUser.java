@@ -55,7 +55,7 @@ public class ProviderBDUser extends ContentProvider {
     public Cursor query(Uri uri, String[] strings, String s,
                         String[] strings1, String s1) {
 
-        Cursor c ;
+        Cursor c =null;
 
         switch (sUriMatcher.match(uri)) {
 
@@ -79,6 +79,7 @@ public class ProviderBDUser extends ContentProvider {
                 break;
 
             case 3:
+                c = _dao.getUserByCriterio(uri.getLastPathSegment());
 
 
             default:
@@ -92,7 +93,42 @@ public class ProviderBDUser extends ContentProvider {
 
     @Override
     public String getType(Uri uri) {
-        return null;
+
+        String tipomime="";
+
+        switch (sUriMatcher.match(uri)) {
+
+
+            // If the incoming URI was for all of table3
+            case 1:
+
+                tipomime="vnd.android.cursor.dir/vnd.net.ivanvega.sqliteenandroidcurso.provider.provider.usuario";
+
+                break;
+
+            // If the incoming URI was for a single row
+            case 2:
+
+                /*
+                 * Because this URI was for a single row, the _ID value part is
+                 * present. Get the last path segment from the URI; this is the _ID value.
+                 * Then, append the value to the WHERE clause for the query
+                 */
+                tipomime="vnd.android.cursor.item/vnd.net.ivanvega.sqliteenandroidcurso.provider.provider.usuario";
+                break;
+
+            case 3:
+
+                tipomime="vnd.android.cursor.dir/vnd.net.ivanvega.sqliteenandroidcurso.provider.provider.usuario";
+break;
+            default:
+                break;
+            // If the URI is not recognized, you should do some error handling here.
+        }
+        // call the code to actually do the query
+
+        return tipomime ;
+
     }
 
     @Override
