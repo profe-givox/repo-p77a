@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="net.ivanvega.clientecpusuarios.MainActivity">
+    tools:context="net.ivanvega.clientecpusuarios.MainActivity"
+    android:orientation="vertical">
 
     <Button
         android:layout_width="match_parent"
